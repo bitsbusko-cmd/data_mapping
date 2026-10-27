@@ -26,6 +26,19 @@ Ustalenia zapisują się niezależnie od języka: statusy, wybory z list i potwi
 
 **Przegląd** pokazuje postęp wszystkich procesów, pola czekające na decyzję, dane bez źródła i działania według właścicieli.
 
+## Specyfikacja PECI dla zespołu Xpertis
+
+Zakładka **Specyfikacja PECI** (w każdym procesie) i sekcja 1 karty pola pokazują dokładnie, co wysyła Workday:
+
+- ścieżkę XML (np. `Effective_Change › Worker_Status › Hire_Date`),
+- typ danych i zapis (np. data `RRRR-MM-DD±hh:mm`, wartość logiczna `1 / 0`, kod – Reference ID albo Mapped_Value, tekst z wiodącymi zerami),
+- wartości z próbek PECI, długości tekstu, wielokrotność, atrybuty zmian (`isAdded`, `isUpdated`, `isDeleted`, `priorValue`),
+- zdarzenia, przy których sekcja zawsze jest w pliku (według dokumentacji Workday).
+
+Zespół Xpertis ocenia każde pole: **Zgodne** albo **Pytanie** (z treścią pytania do Workday). Pytania trafiają do kontroli, protokołu warsztatu i eksportu do Excela (arkusz „Specyfikacja PECI”). Objaśnienie typów danych otwiera link „Jak czytać typy danych PECI”, a widok **Zdarzenia** pokazuje datę zdarzenia i sekcje w pliku dla każdego kodu (np. TERM = data rozwiązania + 1 dzień).
+
+Typy i przykłady wartości ustalono na podstawie próbek PECI projektu (pliki testowe innych krajów) i słownika PECI Chorus; dane osobowe z próbek zostały zastąpione kształtem wartości (A/a – litera, 9 – cyfra). Ostatecznym potwierdzeniem jest plik PECI z tenanta PL.
+
 ## Zapisywanie i wymiana ustaleń
 
 Zmiany zapisują się automatycznie w przeglądarce. Żeby przekazać ustalenia innym stronom, wybierz **Plik → Zapisz ustalenia do pliku** i wyślij plik JSON. Odbiorca wybiera **Plik → Wczytaj ustalenia z pliku** – zmiany zostaną scalone: nowsze wpisy wygrywają, a potwierdzenia i akceptacje stron się łączą. **Plik → Eksport do Excela** tworzy skoroszyt z mapowaniem, paczkami Xpertis, procesami, kwestiami, słownikami i komentarzami.
@@ -45,6 +58,8 @@ W profilu (prawy górny róg) można też zmienić język, włączyć **duży te
 ## Źródła danych
 
 Propozycja mapowania (wersja 0.1, 22.10.2026) powstała z plików roboczych projektu: Data Dictionary PL, katalog pól PECI (Chorus), Data Traceability Matrix i próbki PECI. Próbki pochodzą z plików testowych innych krajów – słowniki dla Polski wymagają potwierdzenia na polskim pliku testowym. Plik „Fields mapping open points” był chroniony i nie został uwzględniony (kwestia K-01). Wersja angielska danych referencyjnych jest tłumaczeniem wersji polskiej; w razie rozbieżności rozstrzyga wersja polska.
+
+Opis budowy pliku, atrybutów zmian, daty zdarzeń i sekcji w pliku pochodzi z dokumentacji Workday: [Creating PECI Integrations](https://doc.workday.com/workday-education/en-us/course-manuals/creating-integrations-using-global-payroll-connect/creating-peci-integrations.html), [Change Detection](https://doc.workday.com/workday-education/en-us/course-manuals/creating-integrations-using-global-payroll-connect/change-detection.html), [Functional Changes](https://doc.workday.com/workday-education/en-us/course-manuals/creating-integrations-using-global-payroll-connect/functional-changes.html) (Workday Education, Creating Integrations Using Global Payroll Connect).
 
 Narzędzie nie zawiera danych osobowych pracowników.
 
@@ -77,6 +92,19 @@ Agreements are stored independently of the language: statuses, list choices and 
 
 The **Overview** shows the progress of all processes, fields awaiting a decision, data without a source and actions by owner.
 
+### PECI specification for the Xpertis team
+
+The **PECI specification** tab (in every process) and section 1 of the field card show exactly what Workday sends:
+
+- the XML path (e.g. `Effective_Change › Worker_Status › Hire_Date`),
+- the data type and notation (e.g. date `YYYY-MM-DD±hh:mm`, boolean `1 / 0`, code – Reference ID or Mapped_Value, digit strings with leading zeros),
+- values from PECI samples, text lengths, multiplicity, change attributes (`isAdded`, `isUpdated`, `isDeleted`, `priorValue`),
+- the events in which the section is always in the file (per Workday documentation).
+
+The Xpertis team rates every field: **Matches** or **Question** (with the question to Workday). Questions go into the checks, the workshop minutes and the Excel export (sheet “PECI specification”). The “How to read PECI data types” link opens a data-type reference, and the **Events** view shows the event date and the sections in the file for every code (e.g. TERM = termination date + 1 day).
+
+Types and sample values were derived from the project's PECI samples (test files of other countries) and the Chorus PECI dictionary; personal data from the samples was replaced by the shape of the value (A/a – letter, 9 – digit). The final confirmation is a PECI file from the PL tenant.
+
 ### Saving and exchanging agreements
 
 Changes are saved automatically in the browser. To pass your agreements to the other parties, choose **File → Save agreements to file** and send the JSON file. The recipient chooses **File → Load agreements from file** – changes are merged: newer entries win, and the parties' confirmations and sign-offs are combined. **File → Export to Excel** creates a workbook with the mapping, Xpertis packages, processes, issues, dictionaries and comments.
@@ -96,6 +124,8 @@ The profile menu (top right) also lets you change the language, switch on **larg
 ### Data sources
 
 The mapping proposal (version 0.1, 22 October 2026) was built from the project working files: Data Dictionary PL, the PECI field catalogue (Chorus), the Data Traceability Matrix and PECI samples. The samples come from test files of other countries – the dictionaries for Poland need to be confirmed on a Polish test file. The file “Fields mapping open points” was protected and was not included (issue K-01). The English reference data is a translation of the Polish version; where they differ, the Polish version prevails.
+
+The description of the file structure, change attributes, event dates and sections in the file comes from the Workday documentation listed above (Workday Education, Creating Integrations Using Global Payroll Connect).
 
 The tool contains no employee personal data.
 
