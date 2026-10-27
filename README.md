@@ -2,11 +2,11 @@
 
 **PL** · [EN](#english)
 
-Narzędzie warsztatowe do uzgadniania interfejsu Workday (Chorus, plik PECI) → middleware → Xpertis dla Polski. Partner Workday, partner Xpertis i integrator przechodzą proces po procesie i dla każdego pola potwierdzają:
+Narzędzie warsztatowe do uzgadniania integracji Workday (Chorus) → Xpertis dla Polski. Workday generuje plik PECI i przesyła go przez SFTP do Xpertis. Po stronie Xpertis baza pośrednicząca wczytuje plik, konwertuje dane na standard Xpertis i ładuje je do baz produkcyjnych poszczególnych pracodawców. Partner Workday i partner Xpertis przechodzą proces po procesie i dla każdego pola potwierdzają:
 
 - co wysyła Workday w PECI (element XML, typ danych, format),
-- jak middleware przekształca daną na standard Xpertis (wystarczalność, rodzaj transformacji, format docelowy, reguła, słownik),
-- gdzie dana trafia w Xpertis (pole, obiekt, typ, wymagalność),
+- jak baza pośrednicząca konwertuje daną na standard Xpertis (wystarczalność, rodzaj transformacji, format docelowy, reguła, słownik),
+- gdzie dana trafia w bazie produkcyjnej pracodawcy (pole, obiekt, typ, wymagalność),
 - skąd uzupełnić dane, których PECI nie dostarcza.
 
 ## Język
@@ -19,7 +19,7 @@ Ustalenia zapisują się niezależnie od języka: statusy, wybory z list i potwi
 
 1. Otwórz `index.html` (lokalnie albo przez GitHub Pages). Przy pierwszym uruchomieniu podaj imię i nazwisko oraz stronę – podpisują komentarze, potwierdzenia i akceptacje.
 2. Wybierz proces z listy po lewej (kolejność: P00, potem wejście, dane osobowe, zmiany, wynagrodzenie, nieobecności, wyjście).
-3. Przechodź pola po kolei. Karta pola ma trzy kroki z osobnym potwierdzeniem każdej strony: **1 Workday**, **2 Middleware**, **3 Xpertis**. Gdy wszystkie strony się zgadzają, kliknij **Uzgodnione na warsztacie** – pole dostaje status „Potwierdzone”, a karta przechodzi do następnego pola.
+3. Przechodź pola po kolei. Karta pola ma trzy kroki z osobnym potwierdzeniem każdej strony: **1 Workday**, **2 Baza pośrednicząca**, **3 Xpertis**. Gdy wszystkie strony się zgadzają, kliknij **Uzgodnione na warsztacie** – pole dostaje status „Potwierdzone”, a karta przechodzi do następnego pola.
 4. Brakujące dane dopisz w zakładce **Paczka Xpertis**.
 5. W zakładce **Kontrola** popraw błędy i ostrzeżenia (przycisk „Popraw” prowadzi do właściwego pola). Formaty docelowe wynikające z reguł możesz przyjąć jednym kliknięciem.
 6. W zakładce **Akceptacja** wpisz dane warsztatu, zaakceptuj proces w imieniu stron i skopiuj protokół warsztatu.
@@ -68,11 +68,11 @@ Narzędzie nie zawiera danych osobowych pracowników.
 <a id="english"></a>
 ## English
 
-A workshop tool for agreeing the Workday (Chorus, PECI file) → middleware → Xpertis interface for Poland. The Workday partner, the Xpertis partner and the integrator go through the processes one by one and, for every field, confirm:
+A workshop tool for agreeing the Workday (Chorus) → Xpertis integration for Poland. Workday generates the PECI file and sends it via SFTP to Xpertis. On the Xpertis side a staging database loads the file, converts the data to the Xpertis standard and loads it into the production databases of the individual employers. The Workday partner and the Xpertis partner go through the processes one by one and, for every field, confirm:
 
 - what Workday sends in PECI (XML element, data type, format),
-- how middleware transforms the data to the Xpertis standard (sufficiency, transformation type, target format, rule, dictionary),
-- where the data goes in Xpertis (field, object, type, whether required),
+- how the staging database converts the data to the Xpertis standard (sufficiency, transformation type, target format, rule, dictionary),
+- where the data goes in the employer production database (field, object, type, whether required),
 - where to complete data that PECI does not deliver.
 
 ### Language
@@ -85,7 +85,7 @@ Agreements are stored independently of the language: statuses, list choices and 
 
 1. Open `index.html` (locally or via GitHub Pages). On first use, enter your name and party – they sign your comments, confirmations and sign-offs.
 2. Choose a process from the list on the left (order: P00, then entry, personal data, changes, compensation, absences, exit).
-3. Go through the fields one by one. The field card has three steps, each confirmed separately by its party: **1 Workday**, **2 Middleware**, **3 Xpertis**. When all parties agree, click **Agreed in workshop** – the field gets the status “Confirmed” and the card moves on to the next field.
+3. Go through the fields one by one. The field card has three steps, each confirmed separately by its party: **1 Workday**, **2 Staging database**, **3 Xpertis**. When all parties agree, click **Agreed in workshop** – the field gets the status “Confirmed” and the card moves on to the next field.
 4. Add missing data in the **Xpertis package** tab.
 5. In the **Checks** tab, fix errors and warnings (the “Fix” button takes you to the right field). Target formats that follow from the rules can be accepted with one click.
 6. In the **Sign-off** tab, enter the workshop details, sign off the process on behalf of the parties and copy the workshop minutes.
